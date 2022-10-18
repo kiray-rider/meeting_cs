@@ -31,11 +31,19 @@ int square(int arg) // функция возведения в квадрат
     // return Math.Pow(arg, 2); - или возведение в степень 2 через Math.Pow
 }
 
+// double length = Math.Sqrt(square(point1[X] - point2[X]) + square(point1[Y] - point2[Y]) + square(point1[Z] - point2[Z])); // короче через функцию:
+double CalcLength(int[] point1, int[] point2)
+{
+    double sumSquare = 0;
+    for(int i = 0; i < point1.Length; i++)
+    {
+        sumSquare += square(point1[i] - point2[i]); //прибавление выражения с прошлой итерации
+    }
+    return Math.Sqrt(sumSquare);
+}
+
 System.Console.WriteLine("Введите ниже координаты двух точек в 3D пространстве:");
 int[] point1 = InputPoint(1);
 int[] point2 = InputPoint(2);
-
-double lenght = Math.Sqrt(square(point1[X] - point2[X]) + square(point1[Y] - point2[Y]) + square(point1[Z] - point2[Z])); // <- Math.Sqrt
-
-System.Console.Write("Расстояние между точками в 3D пространстве: ");
-System.Console.WriteLine($"{lenght:f2}"); // f - количество знаков после запятой.
+double length = CalcLength(point1, point2);
+System.Console.WriteLine($"Расстояние между точками в 3D пространстве: {length:f2}"); // f - количество знаков после запятой.
