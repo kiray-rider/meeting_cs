@@ -65,7 +65,7 @@ decimal[] ColumnMiddle(int[,] matrix)
     decimal[] middleN = new decimal[matrix.GetLength(1)];
     for (int j = 0; j < matrix.GetLength(1); j++)
     {
-        middleN[j] = Convert.ToDecimal(ColumnSumm(matrix, j)) / Convert.ToDecimal(m);
+        middleN[j] = Convert.ToDecimal(ColumnSumm(matrix, j)) / Convert.ToDecimal(matrix.GetLength(0));
     }
     return middleN;
 }
